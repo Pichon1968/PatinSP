@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Belen Profesora de Patín Artístico | Clases en La Tablada</title>
+
+<meta name="description"
+      content="Clases de patín artístico para niñ@s y adolescentes en La Tablada, Buenos Aires. Iniciación, nivel intermedio y competición. Consultas por WhatsApp.">
+
+<meta name="robots" content="index, follow">
+
+<meta name="author" content="Belen Profesora de Patín Artístico">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+
+<!-- Datos estructurados para buscadores -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Belen Profesora de Patín Artístico",
+    "description": "Clases de patín artístico para niñ@s y adolescentes. Niveles de iniciación, intermedio y competición.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Catriel 3941",
+        "addressLocality": "La Tablada",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+    },
+    "telephone": "+5491140625114",
+    "url": "{{ request.url }}"
+}
+</script>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     MENÚ
+========================== -->
+
+<nav class="menu">
+
+    <div class="menu-contenedor">
+
+        <a href="#inicio" class="logo">
+            {{ datos.nombre }}
+        </a>
+
+        <div class="links">
+
+            <a href="#inicio">Inicio</a>
+            <a href="#niveles">Niveles</a>
+            <a href="#galeria">Galería</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#contacto">Contacto</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     PORTADA
+========================== -->
+
+<header id="inicio" class="hero">
+
+    <div class="hero-contenido">
+
+        <div class="hero-texto">
+
+            <p class="subtitulo">
+                CLASES DE PATÍN ARTÍSTICO
+            </p>
+
+            <h1>
+                {{ datos.nombre }}
+            </h1>
+
+            <p class="descripcion">
+                Clases de patín artístico para niñ@s y adolescentes
+                en La Tablada, Buenos Aires.
+            </p>
+
+            <a
+                class="boton-whatsapp"
+                href="https://wa.me/{{ datos.contacto }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Consultar por WhatsApp"
+            >
+                Consultar por WhatsApp
+            </a>
+
+        </div>
+
+
+        <div class="hero-imagen">
+
+            <img
+                src="{{ url_for('static', filename='imagenes/logo2.jpeg') }}"
+                alt="Clases de patín artístico en La Tablada"
+            >
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     CONTENIDO PRINCIPAL
+========================== -->
+
+<main>
+
+
+    <!-- =========================
+         NIVELES
+    ========================== -->
+
+    <section id="niveles" class="seccion">
+
+        <div class="contenedor">
+
+            <p class="titulo-seccion">
+                CLASES
+            </p>
+
+            <h2>
+                Clases de patín artístico para diferentes niveles
+            </h2>
+
+            <p class="texto-seccion">
+                Tenemos clases adaptadas a diferentes edades,
+                niveles de experiencia y objetivos.
+            </p>
+
+
+            <div class="niveles">
+
+                {% for nivel in datos.niveles %}
+
+                    <div class="nivel">
+
+                        <div class="numero">
+                            {{ loop.index }}
+                        </div>
+
+                        <h3>
+                            {{ nivel }}
+                        </h3>
+
+                        <p>
+                            Clases de patín artístico adaptadas
+                            a tu nivel y objetivos.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERÍA
+    ========================== -->
+
+    <section id="galeria" class="seccion galeria">
+
+        <div class="contenedor">
+
+            <p class="titulo-seccion">
+                FOTOS
+            </p>
+
+            <h2>
+                Galería de patín artístico
+            </h2>
+
+            <div class="imagenes">
+
+                <img
+                    src="{{ url_for('static', filename='imagenes/patines4.jpg') }}"
+                    alt="Profesora de patín artístico"
+                    loading="lazy"
+                >
+
+                <img
+                    src="{{ url_for('static', filename='imagenes/clase_patin.jpg') }}"
+                    alt="Clase de patín artístico"
+                    loading="lazy"
+                >
+
+                <img
+                    src="{{ url_for('static', filename='imagenes/foto2.jpg') }}"
+                    alt="Patín artístico"
+                    loading="lazy"
+                >
+                <img
+                    src="{{ url_for('static', filename='imagenes/foto_patin.jpg') }}"
+                    alt="Patín artístico"
+                    loading="lazy"
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         UBICACIÓN
+    ========================== -->
+
+    <section id="ubicacion" class="seccion">
+
+        <div class="contenedor">
+
+            <p class="titulo-seccion">
+                ENCONTRANOS
+            </p>
+
+            <h2>
+                📍 {{ datos.ubicacion }}
+            </h2>
+
+            <p class="texto-seccion">
+                Estamos en Catriel 3941, La Tablada,
+                Provincia de Buenos Aires.
+            </p>
+
+
+            <div class="mapa">
+
+                <iframe
+                    src="https://www.google.com/maps?q=-34.6786547,-58.535768&z=16&output=embed"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    title="Ubicación de las clases de patín artístico">
+                </iframe>
+
+            </div>
+
+
+            <div class="boton-mapa">
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=-34.6786547,-58.535768"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📍 Abrir en Google Maps
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACTO
+    ========================== -->
+
+    <section id="contacto" class="contacto">
+
+        <div class="contenedor">
+
+            <p class="titulo-seccion">
+                CONTACTO
+            </p>
+
+            <h2>
+                ¿Querés empezar patín artístico?
+            </h2>
+
+            <p>
+                Escribinos por WhatsApp para consultar
+                horarios y disponibilidad.
+            </p>
+
+            <a
+                class="boton-whatsapp"
+                href="https://wa.me/{{ datos.contacto }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hablar por WhatsApp"
+            >
+                📱 Hablar por WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     PIE DE PÁGINA
+========================== -->
+
+<footer>
+
+    <p>
+        © 2026 {{ datos.nombre }}
+    </p>
+
+</footer>
+```
+
+</body>
+
+</html>
