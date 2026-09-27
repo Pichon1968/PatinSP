@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     informacion_profesora = {
-"nombre": "Belen Profesora de Patin Artistico San Pantaleon",
+"nombre": "Belen Profesora de Patin Artistico en San Pantaleon",
 "descripcion": "Clases para niñ@s y Adolescentes ",
 "niveles": [
 "Iniciación",
